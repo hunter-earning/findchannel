@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KhazanaX - Advanced YouTube Channel Finder</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">KhazanaX Pro</a>
+            <span class="navbar-text text-light">Agency Dashboard</span>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Advanced Search Filters</h5>
+                        <form id="searchForm">
+                            <!-- Basic Filters -->
+                            <div class="filter-section">
+                                <h6 class="filter-title">Basic Filters</h6>
+                                <div class="mb-3">
+                                    <label class="form-label">Category</label>
+                                    <select class="form-select" id="category" multiple>
+                                        <option value="gaming">Gaming</option>
+                                        <option value="education">Education</option>
+                                        <option value="entertainment">Entertainment</option>
+                                        <option value="music">Music</option>
+                                        <option value="tech">Technology</option>
+                                        <option value="lifestyle">Lifestyle</option>
+                                        <option value="business">Business</option>
+                                        <option value="food">Food</option>
+                                        <option value="travel">Travel</option>
+                                        <option value="fitness">Fitness</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Audience Metrics -->
+                            <div class="filter-section">
+                                <h6 class="filter-title">Audience Metrics</h6>
+                                <div class="mb-3">
+                                    <label class="form-label">Subscriber Range</label>
+                                    <div class="input-group">
+                                        <input type="number" class="form-control" id="minSubscribers" placeholder="Min">
+                                        <input type="number" class="form-control" id="maxSubscribers" placeholder="Max">
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Average Views</label>
+                                    <input type="number" class="form-control" id="minAvgViews" placeholder="Minimum average views">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Engagement Rate</label>
+                                    <select class="form-select" id="engagementRate">
+                                        <option value="">Any Rate</option>
+                                        <option value="high">High (>10%)</option>
+                                        <option value="medium">Medium (5-10%)</option>
+                                        <option value="low">Low (<5%)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Content Analysis -->
+                            <div class="filter-section">
+                                <h6 class="filter-title">Content Analysis</h6>
+                                <div class="mb-3">
+                                    <label class="form-label">Content Type</label>
+                                    <select class="form-select" id="contentType" multiple>
+                                        <option value="long">Long Videos</option>
+                                        <option value="short">Shorts</option>
+                                        <option value="mixed">Mixed Content</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Upload Frequency</label>
+                                    <select class="form-select" id="uploadFrequency">
+                                        <option value="">Any Frequency</option>
+                                        <option value="daily">Daily</option>
+                                        <option value="weekly">Weekly</option>
+                                        <option value="biweekly">Bi-weekly</option>
+                                        <option value="monthly">Monthly</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Channel Age</label>
+                                    <select class="form-select" id="channelAge">
+                                        <option value="">Any Age</option>
+                                        <option value="new">New (<1 year)</option>
+                                        <option value="growing">Growing (1-3 years)</option>
+                                        <option value="established">Established (>3 years)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Monetization & Brand Safety -->
+                            <div class="filter-section">
+                                <h6 class="filter-title">Monetization & Safety</h6>
+                                <div class="mb-3">
+                                    <label class="form-label">Monetization Status</label>
+                                    <select class="form-select" id="monetizationStatus">
+                                        <option value="">Any Status</option>
+                                        <option value="monetized">Monetized</option>
+                                        <option value="not_monetized">Not Monetized</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="brandSafe">
+                                        <label class="form-check-label">Brand Safe Content</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Growth Metrics -->
+                            <div class="filter-section">
+                                <h6 class="filter-title">Growth Analysis</h6>
+                                <div class="mb-3">
+                                    <label class="form-label">Growth Rate (Last 3 Months)</label>
+                                    <select class="form-select" id="growthRate">
+                                        <option value="">Any Growth Rate</option>
+                                        <option value="high">High (>20%)</option>
+                                        <option value="medium">Medium (10-20%)</option>
+                                        <option value="low">Low (<10%)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary w-100">Search Channels</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <!-- Analytics Summary -->
+                <div class="card mb-4 d-none" id="analyticsSummary">
+                    <div class="card-body">
+                        <h5 class="card-title">Search Analytics</h5>
+                        <div class="row" id="analyticsData">
+                            <!-- Analytics data will be inserted here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Results Area -->
+                <div id="results" class="row g-4">
+                    <!-- Channel results will be dynamically inserted here -->
+                </div>
+                <div id="loading" class="text-center d-none">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enhanced Channel Details Modal -->
+    <div class="modal fade" id="channelModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Channel Analysis</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <ul class="nav nav-tabs" id="channelTabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-bs-toggle="tab" href="#overview">Overview</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#analytics">Analytics</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#content">Content</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#engagement">Engagement</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#contact">Contact</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content mt-3" id="channelDetails">
+                        <!-- Channel details will be dynamically inserted here -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" id="exportChannelData">
+                        <i class="fas fa-download"></i> Export Analysis
+                    </button>
+                    <button type="button" class="btn btn-primary" id="addToProspects">
+                        <i class="fas fa-star"></i> Add to Prospects
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html> 
